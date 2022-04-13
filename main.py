@@ -22,14 +22,24 @@ while True:
             for sorok in adatok:
                   sor = sorok.split(';')
                   if bejelentkezes == sor[0]:
+                        #felhasznalo adatai file ----
+                        nev = sor[0]
+                        #felhasznalo adatai class ----
+                        stat.exp = sor[1]
+                        stat.szint = sor[2]
+                        stat.Hp = sor[3]
+                        stat.Mana = sor[4]
+                        stat.Ero = sor[5]
+                        stat.Gyorsasag = sor[6]
+                        stat.penz = sor[7]
                         print(f"Bejelentkeztél: {sor[0]}\n"
-                              f"Tapasztalati pontok: {sor[1]}\n"
-                              f"Szint: {sor[2]}\n"
-                              f"Hp: {sor[3]}\n"
-                              f"Mana: {sor[4]}\n"
-                              f"Ero: {sor[5]}\n"
-                              f"Gyorsaság: {sor[6]}\n"
-                              f"Pénz: {sor[7]}\n")
+                              f"Tapasztalati pontok: {stat.exp}\n"
+                              f"Szint: {stat.szint}\n"
+                              f"Hp: {stat.Hp}\n"
+                              f"Mana: {stat.Mana}\n"
+                              f"Ero: {stat.Ero}\n"
+                              f"Gyorsaság: {stat.Gyorsasag}\n"
+                              f"Pénz: {stat.penz}\n")
 
       elif reg == "n":
             regisztracio = input('Felhasználónév megadása regisztráláshoz (max 15 karakter):')
