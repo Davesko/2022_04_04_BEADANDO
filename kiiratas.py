@@ -81,4 +81,6 @@ class Kiiratas:
         print(f'Manád: {self.Mana}')
         print(f'Erőd: {self.Ero}')
         print(f'Gyorsaságod: {self.Gyorsasag}')
+        print(f'---------')
+        print(f'Pénzed: {self.penz}')
         print(f'------------------')
