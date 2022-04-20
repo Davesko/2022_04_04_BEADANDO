@@ -3,7 +3,7 @@ import random
 #kiiratás class ----
 class Kiiratas:
     #saját statok ----
-    exp = 25
+    exp = 0
     szint = 0
     Hp = 100
     Mana = 100
@@ -141,7 +141,7 @@ class Kiiratas:
 
                     if szornyelete <= 0:
                         print(
-                            f'Gratulálok, legyőzted az ellenfelet, nehéz csata volt! \t A jutalmad {szornyerteke * 5} tapasztalat pont')
+                            f'Gratulálok, legyőzted az ellenfelet, nehéz csata volt! \t A jutalmad {szornyerteke * 5} tapasztalat pont és {szornyerteke * 2} arany.')
                         self.penz += szornyerteke * 2
                         self.exp += szornyerteke * 5
                         self.adatok()
@@ -165,7 +165,7 @@ class Kiiratas:
 
                 while szornyelete >= 0 or self.Hp >= 0:
                     valasztas = input("Támadás / Védekezés")
-                    if valasztas == "tamadas" or valasztas == "támadás" or valasztas == "Támadás":
+                    if valasztas == "tamadas" or valasztas == "támadás" or valasztas == "Támadás" or valasztas == "t":
                         self.Mana -= random.randint(5,15)
                         sebzes = self.Ero + random.randint(1, 2)
 
@@ -182,8 +182,10 @@ class Kiiratas:
                         print('Nem tudom hogy ez mit jelent!')
 
                     if szornyelete == 0 or szornyelete < 0:
-                        print(f'Gratulálok, legyőzted az ellenfelet, nehéz csata volt! \t A jutalmad {szornyerteke}')
-                        self.penz += szornyerteke
+                        print(f'Gratulálok, legyőzted az ellenfelet, nehéz csata volt! \t A jutalmad {szornyerteke * 5} tapasztalat pont és {szornyerteke * 2} arany.')
+                        self.penz += szornyerteke * 2
+                        self.exp += szornyerteke * 5
+                        self.adatok()
                         break
             # szint > 10
             if int(self.szint) >= 10:
@@ -204,7 +206,7 @@ class Kiiratas:
 
                 while szornyelete >= 0 or self.Hp >= 0:
                     valasztas = input("Támadás / Védekezés")
-                    if valasztas == "tamadas" or valasztas == "támadás" or valasztas == "Támadás":
+                    if valasztas == "tamadas" or valasztas == "támadás" or valasztas == "Támadás" or valasztas == "t":
                         self.Mana -= random.randint(5,15)
                         sebzes = self.Ero + random.randint(1, 2)
 
@@ -221,6 +223,8 @@ class Kiiratas:
                         print('Nem tudom hogy ez mit jelent!')
 
                     if szornyelete == 0 or szornyelete < 0:
-                        print(f'Gratulálok, legyőzted az ellenfelet, nehéz csata volt! \t A jutalmad {szornyerteke}')
-                        self.penz += szornyerteke
+                        print(f'Gratulálok, legyőzted az ellenfelet, nehéz csata volt! \t A jutalmad {szornyerteke * 5} tapasztalat pont és {szornyerteke * 2} arany.')
+                        self.penz += szornyerteke * 2
+                        self.exp += szornyerteke * 5
+                        self.adatok()
                         break

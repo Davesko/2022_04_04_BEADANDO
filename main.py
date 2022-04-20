@@ -1,4 +1,6 @@
 #import ----
+import sys
+
 import kiiratas
 import random
 
@@ -12,58 +14,82 @@ print(f'\n------------------------\n'
       f'A HATALMAS HARCOS JÁTÉK\n'
       f'------------------------\n')
 
-#profil ----
-reg = input("Regisztráltál már (i/n):")
+# adatok ----
 felhaszalok = open('felhasznalok.txt', 'r')
+adatok = felhaszalok.readlines()
+sor = []
+for sorok in adatok:
+      sor.append(sorok.strip().split(';'))
 #reg / log ----
-i = 2
-x = 2
-y = 2
-while True:
+login = 0
+nev = ""
+while login < 100:
+      reg = input("Regisztráltál már (i/n):")
+
       if reg == "i" or reg == "I":
-            bejelentkezes = input('Felhasználónév megadása bejelentkezéshez (max 15 karakter):')
-            adatok = felhaszalok.readlines()
-            for sorok in adatok:
-                  sor = sorok.split(';')
-                  if bejelentkezes == sor[0]:
+            bekeres = input('Felhasználónév megadása bejelentkezéshez (max 15 karakter):')
+            for i in sor:
+                  if bekeres == i[0]:
                         bejelentkezve = 1
                         #felhasznalo adatai file ----
-                        nev = sor[0]
+                        nev = i[0]
                         #felhasznalo adatai class ----
-                        stat.exp = int(sor[1])
-                        stat.penz = int(sor[2])
+                        stat.exp = int(i[1])
+                        stat.penz = int(i[2])
                         stat.adatok()
+                        print(f"Bejelentkezve, mint {nev}")
+                        login = 100
                         break
-                  else:
-                        print("Nem található ilyen felhasználó")
-            break
+            else:
+                  print("Nem található ilyen felhasználó")
+
+
       elif reg == "n"  or reg == "N":
-            regisztracio = input('Felhasználónév megadása regisztráláshoz (max 15 karakter):')
+            bekeres = input('Felhasználónév megadása bejelentkezéshez (max 15 karakter):')
             with open('felhasznalok.txt', 'a') as felhaszalok:
-                  felhaszalok.write(f"{regisztracio};"
+                  felhaszalok.write(f"{bekeres};"
                                     f"{stat.exp};"
                                     f"{stat.penz}\n")
-                  break
+                  felhaszalok.close()
+            nev = bekeres
+            stat.exp = 0
+            stat.penz = 0
+            bejelentkezve = 1
+            print('-----------------')
+            print(f'Regisztrálva és bejelentkezve, mint {nev}')
+            break
       else:
             print("Ez nem érthető számomra, írj i-t vagy n-t!")
 
-while i < 3:
+#main ----
+while True:
       if bejelentkezve == 1:
-            bekert = input("Mit szeretnél csinálni? [alvás] | [harc] | [fejlesztés] | [stat]::")
-            while x < 3:
+            while True:
+                  bekert = input("Mit szeretnél csinálni? [alvás] | [harc] | [fejlesztés] | [stat] | [exit]::")
                   # stat ----
                   if bekert == "stat":
                         stat.adatok()
                         bekert = input("Mit szeretnél csinálni? [alvás] | [harc] | [fejlesztés] | [stat]::")
                         print('--------------------------------')
-                        x += 1
                   # harc ----
                   elif bekert == "harc" or bekert == "harcolas" or bekert == "harcolás":
                         stat.harc()
-                        x += 1
+                  # exit ----
+                  elif bekert == "exit":
+                        sys.exit()
+                        # with open('felhasznalok.txt', 'w',) as file:
+                        #       file.writelines(data)
+                        # sys.exit()
+
+                        # for i in sor:
+                        #       if nev == i[0]:
+                        #             with open('felhasznalok.txt', 'w') as mentes_file:
+                        #                   mentes_file.write(f"{nev};"
+                        #                                     f"{stat.exp};"
+                        #                                     f"{stat.penz}\n")
+                        #                   mentes_file.close()
+                        #
                   # hiba ----
-                  elif bekert != "stat" and bekert != "harc" and bekert != "harcolas" and bekert != "harcolás":
+                  elif bekert != "stat" and bekert != "harc" and bekert != "harcolas" and bekert != "harcolás" and bekert != "exit":
                         print('Nem tudom, hogy ez mit jelent!')
-                        bekert = input("Mit szeretnél csinálni? [alvás] | [harc] | [fejlesztés] | [stat]::")
-                        x = 2
-felhaszalok.close()
+      break

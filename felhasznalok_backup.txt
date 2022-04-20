@@ -1,4 +1,4 @@
-zsolesz;1383;172
+zsolesz;1303;140
 davic;0;0
 asd;270;0
 reg;0;0
