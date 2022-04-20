@@ -1,13 +1,11 @@
 #import ----
 import kiiratas
 import random
-import harc
 
 bejelentkezve = 0
 
 #statok ----
 stat = kiiratas.Kiiratas()
-harcolas = harc.HarcKiiratas()
 
 #title ----
 print(f'\n------------------------\n'
@@ -21,44 +19,35 @@ felhaszalok = open('felhasznalok.txt', 'r')
 i = 2
 x = 2
 y = 2
-while i < 3:
-      if reg == "i":
+while True:
+      if reg == "i" or reg == "I":
             bejelentkezes = input('Felhasználónév megadása bejelentkezéshez (max 15 karakter):')
             adatok = felhaszalok.readlines()
             for sorok in adatok:
                   sor = sorok.split(';')
-                  while y < 3:
-                        if bejelentkezes == sor[0]:
-                              bejelentkezve = 1
-                              #felhasznalo adatai file ----
-                              nev = sor[0]
-                              #felhasznalo adatai class ----
-                              stat.exp = int(sor[1])
-                              stat.szint = sor[2]
-                              stat.Hp = sor[3]
-                              stat.Mana = sor[4]
-                              stat.Ero = sor[5]
-                              stat.Gyorsasag = sor[6]
-                              stat.penz = sor[7]
-                              stat.adatok()
-                              y += 1
-                        else:
-                              print("Nem található ilyen felhasználó")
-                              y = 2
-      elif reg == "n":
+                  if bejelentkezes == sor[0]:
+                        bejelentkezve = 1
+                        #felhasznalo adatai file ----
+                        nev = sor[0]
+                        #felhasznalo adatai class ----
+                        stat.exp = int(sor[1])
+                        stat.penz = int(sor[2])
+                        stat.adatok()
+                        break
+                  else:
+                        print("Nem található ilyen felhasználó")
+            break
+      elif reg == "n"  or reg == "N":
             regisztracio = input('Felhasználónév megadása regisztráláshoz (max 15 karakter):')
             with open('felhasznalok.txt', 'a') as felhaszalok:
                   felhaszalok.write(f"{regisztracio};"
                                     f"{stat.exp};"
-                                    f"{stat.szint};"
-                                    f"{stat.Hp};"
-                                    f"{stat.Mana};"
-                                    f"{stat.Ero};"
-                                    f"{stat.Gyorsasag};"
                                     f"{stat.penz}\n")
-                  i = 2
+                  break
       else:
-            print("Ez nem érthető számomra, írj i-t vagy n-t, vagy írd kicsivel!")
+            print("Ez nem érthető számomra, írj i-t vagy n-t!")
+
+while i < 3:
       if bejelentkezve == 1:
             bekert = input("Mit szeretnél csinálni? [alvás] | [harc] | [fejlesztés] | [stat]::")
             while x < 3:
@@ -67,15 +56,14 @@ while i < 3:
                         stat.adatok()
                         bekert = input("Mit szeretnél csinálni? [alvás] | [harc] | [fejlesztés] | [stat]::")
                         print('--------------------------------')
-                        i += 1
+                        x += 1
                   # harc ----
                   elif bekert == "harc" or bekert == "harcolas" or bekert == "harcolás":
-                        print(stat.exp)
-                        harcolas.harc()
-                        i += 1
+                        stat.harc()
+                        x += 1
                   # hiba ----
                   elif bekert != "stat" and bekert != "harc" and bekert != "harcolas" and bekert != "harcolás":
                         print('Nem tudom, hogy ez mit jelent!')
-                        bekert = input("Mit szeretnél csinálni? (alvás, harc, fejlesztés, stat)")
+                        bekert = input("Mit szeretnél csinálni? [alvás] | [harc] | [fejlesztés] | [stat]::")
                         x = 2
 felhaszalok.close()
