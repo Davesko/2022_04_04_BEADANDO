@@ -36,8 +36,8 @@ while login < 100:
                         #felhasznalo adatai class ----
                         stat.exp = int(i[1])
                         stat.penz = int(i[2])
-                        stat.adatok()
                         print(f"Bejelentkezve, mint {nev}")
+                        stat.adatok()
                         login = 100
                         break
             else:
@@ -73,22 +73,25 @@ while True:
                         print('--------------------------------')
                   # harc ----
                   elif bekert == "harc" or bekert == "harcolas" or bekert == "harcolás":
+                        stat.Mana -= random.randint(5,15)
                         stat.harc()
                   # exit ----
                   elif bekert == "exit":
                         sys.exit()
-                        # with open('felhasznalok.txt', 'w',) as file:
-                        #       file.writelines(data)
-                        # sys.exit()
-
-                        # for i in sor:
-                        #       if nev == i[0]:
-                        #             with open('felhasznalok.txt', 'w') as mentes_file:
-                        #                   mentes_file.write(f"{nev};"
-                        #                                     f"{stat.exp};"
-                        #                                     f"{stat.penz}\n")
-                        #                   mentes_file.close()
-                        #
+                        # while True:
+                        #       for i in sor:
+                        #             if i.index(nev):
+                        #                   print(i.index(nev))
+                        #       # if nev in i[0]:
+                        #       #       print(".--")
+                        #       #       # with open('felhasznalok.txt', 'w') as mentes_file:
+                        #       #       #       mentes_file.write(f"{nev};"
+                        #       #       #                         f"{stat.exp};"
+                        #       #       #                         f"{stat.penz}\n")
+                        #       #       #       mentes_file.close()
+                        #       #       #       sys.exit()
+                        #       # else:
+                        #       #       print(" ")
                   # hiba ----
                   elif bekert != "stat" and bekert != "harc" and bekert != "harcolas" and bekert != "harcolás" and bekert != "exit":
                         print('Nem tudom, hogy ez mit jelent!')

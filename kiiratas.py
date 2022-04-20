@@ -117,8 +117,12 @@ class Kiiratas:
 
                 while szornyelete >= 0 or self.Hp >= 0:
                     valasztas = input("Támadás / Védekezés")
+                    random_szorny_tamadas = random.randint(1,5)
                     if valasztas == "tamadas" or valasztas == "támadás" or valasztas == "Támadás" or valasztas == "t":
-                        self.Mana -= random.randint(5,15)
+                        if random_szorny_tamadas < 2:
+                            random_szorny_hit_szoveg = ['nagyon', 'vészesen', 'cselesen, de']
+                            self.Hp -= szornysebzese
+                            print(f"A szörny {random.choice(random_szorny_hit_szoveg)} erősen megütött, ezért az életerőd {self.Hp}-ra/re csökkent")
                         sebzes = self.Ero + random.randint(1, 2)
 
                         randomkrit = random.randint(1, 10)
@@ -136,6 +140,42 @@ class Kiiratas:
                                 print('A szörnynek nem maradt élete!')
                             else:
                                 print(f'A szöny élete csökkent {sebzes} HP-val. A szörnynek {szornyelete} HP-ja maradt.')
+                    elif valasztas == "vedekezes" or valasztas == "védekezés" or valasztas == "Védekezés" or valasztas == "v":
+                        if self.szint == 0:
+                            if self.Hp < 110:
+                                self.Hp += random.randint(3,13)
+                                print(f"{self.Hp} ennyire nőtt")
+                            else:
+                                random_vedekezes_szoveg = ['nincs több erőd.', 'elejtetted a pajzsod.', 'nincs több potid.']
+                                print(f"Sajnos nem tudsz többször védekezni, mivel {random.choice(random_vedekezes_szoveg)}")
+                        if self.szint == 1:
+                            if self.Hp < 120:
+                                self.Hp += random.randint(3,13)
+                                print(f"{self.Hp} ennyire nőtt")
+                            else:
+                                random_vedekezes_szoveg = ['nincs több erőd.', 'elejtetted a pajzsod.', 'nincs több potid.']
+                                print(f"Sajnos nem tudsz többször védekezni, mivel {random.choice(random_vedekezes_szoveg)}")
+                        if self.szint == 2:
+                            if self.Hp < 127:
+                                self.Hp += random.randint(3,13)
+                                print(f"{self.Hp} ennyire nőtt")
+                            else:
+                                random_vedekezes_szoveg = ['nincs több erőd.', 'elejtetted a pajzsod.', 'nincs több potid.']
+                                print(f"Sajnos nem tudsz többször védekezni, mivel {random.choice(random_vedekezes_szoveg)}")
+                        if self.szint == 3:
+                            if self.Hp < 132:
+                                self.Hp += random.randint(3,13)
+                                print(f"{self.Hp} ennyire nőtt")
+                            else:
+                                random_vedekezes_szoveg = ['nincs több erőd.', 'elejtetted a pajzsod.', 'nincs több potid.']
+                                print(f"Sajnos nem tudsz többször védekezni, mivel {random.choice(random_vedekezes_szoveg)}")
+                        if self.szint == 4:
+                            if self.Hp < 140:
+                                self.Hp += random.randint(3,13)
+                                print(f"{self.Hp} ennyire nőtt")
+                            else:
+                                random_vedekezes_szoveg = ['nincs több erőd.', 'elejtetted a pajzsod.', 'nincs több potid.']
+                                print(f"Sajnos nem tudsz többször védekezni, mivel {random.choice(random_vedekezes_szoveg)}")
                     else:
                         print('Nem tudom hogy ez mit jelent!')
 
@@ -144,6 +184,7 @@ class Kiiratas:
                             f'Gratulálok, legyőzted az ellenfelet, nehéz csata volt! \t A jutalmad {szornyerteke * 5} tapasztalat pont és {szornyerteke * 2} arany.')
                         self.penz += szornyerteke * 2
                         self.exp += szornyerteke * 5
+                        self.Hp = self.Hp
                         self.adatok()
                         break
             # 5 < szint > 10
@@ -165,7 +206,12 @@ class Kiiratas:
 
                 while szornyelete >= 0 or self.Hp >= 0:
                     valasztas = input("Támadás / Védekezés")
+                    random_szorny_tamadas = random.randint(1,5)
                     if valasztas == "tamadas" or valasztas == "támadás" or valasztas == "Támadás" or valasztas == "t":
+                        if random_szorny_tamadas < 2:
+                            random_szorny_hit_szoveg = ['nagyon', 'vészesen', 'cselesen, de']
+                            self.Hp -= szornysebzese
+                            print(f"A szörny {random.choice(random_szorny_hit_szoveg)} erősen megütött, ezért az életerőd {self.Hp}-ra/re csökkent")
                         self.Mana -= random.randint(5,15)
                         sebzes = self.Ero + random.randint(1, 2)
 
@@ -178,6 +224,52 @@ class Kiiratas:
                         else:
                             szornyelete = szornyelete - sebzes
                             print(f'A szöny élete csökkent {sebzes} HP-val. A szörnynek {szornyelete} HP-ja maradt.')
+                    elif valasztas == "vedekezes" or valasztas == "védekezés" or valasztas == "Védekezés" or valasztas == "v":
+                        if self.szint == 5:
+                            if self.Hp < 146:
+                                self.Hp += random.randint(3, 13)
+                                print(f"{self.Hp} ennyire nőtt")
+                            else:
+                                random_vedekezes_szoveg = ['nincs több erőd.', 'elejtetted a pajzsod.',
+                                                           'nincs több potid.']
+                                print(
+                                    f"Sajnos nem tudsz többször védekezni, mivel {random.choice(random_vedekezes_szoveg)}")
+                        if self.szint == 6:
+                            if self.Hp < 153:
+                                self.Hp += random.randint(3, 13)
+                                print(f"{self.Hp} ennyire nőtt")
+                            else:
+                                random_vedekezes_szoveg = ['nincs több erőd.', 'elejtetted a pajzsod.',
+                                                           'nincs több potid.']
+                                print(
+                                    f"Sajnos nem tudsz többször védekezni, mivel {random.choice(random_vedekezes_szoveg)}")
+                        if self.szint == 7:
+                            if self.Hp < 160:
+                                self.Hp += random.randint(3, 13)
+                                print(f"{self.Hp} ennyire nőtt")
+                            else:
+                                random_vedekezes_szoveg = ['nincs több erőd.', 'elejtetted a pajzsod.',
+                                                           'nincs több potid.']
+                                print(
+                                    f"Sajnos nem tudsz többször védekezni, mivel {random.choice(random_vedekezes_szoveg)}")
+                        if self.szint == 8:
+                            if self.Hp < 167:
+                                self.Hp += random.randint(3, 13)
+                                print(f"{self.Hp} ennyire nőtt")
+                            else:
+                                random_vedekezes_szoveg = ['nincs több erőd.', 'elejtetted a pajzsod.',
+                                                           'nincs több potid.']
+                                print(
+                                    f"Sajnos nem tudsz többször védekezni, mivel {random.choice(random_vedekezes_szoveg)}")
+                        if self.szint == 9:
+                            if self.Hp < 174:
+                                self.Hp += random.randint(3, 13)
+                                print(f"{self.Hp} ennyire nőtt")
+                            else:
+                                random_vedekezes_szoveg = ['nincs több erőd.', 'elejtetted a pajzsod.',
+                                                           'nincs több potid.']
+                                print(
+                                    f"Sajnos nem tudsz többször védekezni, mivel {random.choice(random_vedekezes_szoveg)}")
                     else:
                         print('Nem tudom hogy ez mit jelent!')
 
@@ -219,6 +311,16 @@ class Kiiratas:
                         else:
                             szornyelete = szornyelete - sebzes
                             print(f'A szöny élete csökkent {sebzes} HP-val. A szörnynek {szornyelete} HP-ja maradt.')
+                    elif valasztas == "vedekezes" or valasztas == "védekezés" or valasztas == "Védekezés" or valasztas == "v":
+                        if self.szint == 10:
+                            if self.Hp < 185:
+                                self.Hp += random.randint(3, 13)
+                                print(f"{self.Hp} ennyire nőtt")
+                            else:
+                                random_vedekezes_szoveg = ['nincs több erőd.', 'elejtetted a pajzsod.',
+                                                           'nincs több potid.']
+                                print(
+                                    f"Sajnos nem tudsz többször védekezni, mivel {random.choice(random_vedekezes_szoveg)}")
                     else:
                         print('Nem tudom hogy ez mit jelent!')
 
